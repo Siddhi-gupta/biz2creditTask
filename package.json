@@ -1,0 +1,17 @@
+{
+  "name": "invitecustomers",
+  "version": "1.0.0",
+  "description": "Api to get details of the customers.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "author": "Siddhi Gupta",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "moment": "^2.24.0",
+    "pino": "^5.15.0"
+  }
+}

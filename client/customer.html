@@ -1,0 +1,50 @@
+
+<!-- static page html page to display the output of api by making ajax call using jQuery 
+    In script tag calling api to get the list of eligible customers and on getting data from call
+    appending it to existing table in html
+-->
+
+<!doctype html>
+<head>
+    <meta charset="UTF-8">
+    <title>Invitation</title>
+</head>
+
+<body>
+    <div>
+        <table class="list-customers">
+            <tr>
+                <th class="latitude column">Latitude</th>
+                <th class="user_id column">ID</th>
+                <th class="name column">Name</th>
+                <th class="longitude column">Longitude</th>
+                <th class="distance column">Distance</th>
+            </tr>
+        </table>
+    </div>
+
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () { // on page load make ajax call
+            $.ajax({
+                url: "http://localhost:3000/api/v1/invite-customers/customers"
+            }).done(function (data) {
+                // iterate over the data get from response to 
+                // add rows and column to the table dynamically using jQuery
+                $.each(data.data, function (key, value) { 
+                    var tr = $("<tr />")
+                    $.each(value, function (k, v) {
+                        tr.append(
+                            $("<td />", {
+                                html: v
+                            })[0].outerHTML
+                        );
+                        $("table tbody").append(tr)
+                    })
+                })
+            });
+        });
+    </script>
+</body>
+
+</html>
